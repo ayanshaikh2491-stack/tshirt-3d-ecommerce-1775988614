@@ -1,32 +1,50 @@
-// routes/products.js
-
-const { supabase } = require('../../../utils/supabaseConfig');
+import { NextApiRequest, NextApiResponse } from 'next';
+import { supabase } from '../../../utils/supabaseConfig';
+import { Product } from '../../../types/product';
 
 export async function GET() {
-  const { data, error } = await supabase
-    .from('products')
-    .select('*')
-    .order('id', { ascending: true });
+  try {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*');
 
-  if (error) {
-    throw error;
+    if (error) {
+      throw error;
+    }
+
+    return new Response(JSON.stringify(data), {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    return new Response(null, {
+      status: 500,
+    });
   }
-
-  return new Response(JSON.stringify(data), {
-    headers: { 'Content-Type': 'application/json' },
-  });
 }
 
-export async function POST(request) {
-  const { data, error } = await request.json();
+export async function POST(request: NextApiRequest) {
+  try {
+    const { name, description, price } = await request.json();
+    const { data, error } = await supabase
+      .from('products')
+      .insert({ name, description, price });
 
-  if (error) {
-    throw new Error('Invalid JSON');
+    if (error) {
+      throw error;
+    }
+
+    return new Response(JSON.stringify(data), {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    return new Response(null, {
+      status: 500,
+    });
   }
-
-  const { id } = await supabase.from('products').insert(data);
-
-  return new Response(JSON.stringify({ id }), {
-    headers: { 'Content-Type': 'application/json' },
-  });
 }
