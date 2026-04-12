@@ -1,175 +1,78 @@
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import Head from 'next/head';
 
 export default function Home() {
   return (
-    <div className="max-w-7xl mx-auto p-4 md:p-6 lg:p-8">
-      {/* Hero Section */}
-      <section className="bg-[#3B2D70] text-white py-20 md:py-24 lg:py-28">
-        <h1 className="text-5xl md:text-7xl lg:text-9xl font-playfair font-bold text-center mb-4 md:mb-6 lg:mb-8">
-          Fitness Hub
-        </h1>
-        <p className="text-lg md:text-xl lg:text-2xl text-center mb-8 md:mb-10 lg:mb-12">
-          Unleash your potential with our state-of-the-art gym equipment and expert trainers.
-        </p>
-        <Link href="#features">
-          <a className="bg-[#7E22CE] hover:bg-[#06B6D4] text-white font-bold py-2 px-4 rounded">
-            Explore Our Features
-          </a>
-        </Link>
-      </section>
-
-      {/* Features Section */}
-      <section id="features" className="py-12 md:py-16 lg:py-20">
-        <h2 className="text-3xl md:text-5xl lg:text-7xl font-playfair font-bold text-center mb-4 md:mb-6 lg:mb-8">
-          Our Features
-        </h2>
-        <div className="flex flex-wrap justify-center mb-8 md:mb-10 lg:mb-12">
-          <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-6 lg:px-8 mb-8 md:mb-10 lg:mb-12">
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4 lg:mb-6">
-              Training Programs
-            </h3>
-            <p className="text-lg md:text-xl lg:text-2xl">
-              Our expert trainers will guide you through personalized fitness programs.
-            </p>
-          </div>
-          <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-6 lg:px-8 mb-8 md:mb-10 lg:mb-12">
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4 lg:mb-6">
-              Equipment
-            </h3>
-            <p className="text-lg md:text-xl lg:text-2xl">
-              State-of-the-art gym equipment for a comprehensive workout experience.
-            </p>
-          </div>
-          <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-6 lg:px-8 mb-8 md:mb-10 lg:mb-12">
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4 lg:mb-6">
-              Nutrition Advice
-            </h3>
-            <p className="text-lg md:text-xl lg:text-2xl">
-              Get personalized nutrition advice from our expert dietitians.
-            </p>
+    <div>
+      <Head>
+        <title>Luxury Gym</title>
+        <meta name="description" content="Luxury Gym Website" />
+      </Head>
+      <div className="h-screen flex flex-col">
+        {/* Hero Section */}
+        <div className="h-screen flex justify-center items-center bg-[#333333] text-[#F5F5F5]">
+          <div className="container mx-auto p-4">
+            <h1 className="text-5xl font-playfair font-bold mb-4">Luxury Gym</h1>
+            <p className="text-2xl font-montserrat mb-8">Experience the finest in fitness</p>
+            <button className="bg-[#8B0A1A] hover:bg-[#8B0A1A] text-[#F5F5F5] font-bold py-2 px-4 rounded">Join Now</button>
           </div>
         </div>
-      </section>
 
-      {/* Testimonials Section */}
-      <section className="bg-[#F8FAFC] py-12 md:py-16 lg:py-20">
-        <h2 className="text-3xl md:text-5xl lg:text-7xl font-playfair font-bold text-center mb-4 md:mb-6 lg:mb-8">
-          What Our Members Say
-        </h2>
-        <div className="flex flex-wrap justify-center mb-8 md:mb-10 lg:mb-12">
-          <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-6 lg:px-8 mb-8 md:mb-10 lg:mb-12">
-            <p className="text-lg md:text-xl lg:text-2xl">
-              "Fitness Hub has helped me achieve my fitness goals and more!"
-            </p>
-            <p className="text-sm md:text-lg lg:text-xl font-bold">
-              - John Doe
-            </p>
-          </div>
-          <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-6 lg:px-8 mb-8 md:mb-10 lg:mb-12">
-            <p className="text-lg md:text-xl lg:text-2xl">
-              "The trainers at Fitness Hub are knowledgeable and supportive."
-            </p>
-            <p className="text-sm md:text-lg lg:text-xl font-bold">
-              - Jane Doe
-            </p>
-          </div>
-          <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-6 lg:px-8 mb-8 md:mb-10 lg:mb-12">
-            <p className="text-lg md:text-xl lg:text-2xl">
-              "I've seen significant improvements in my overall health and fitness."
-            </p>
-            <p className="text-sm md:text-lg lg:text-xl font-bold">
-              - Bob Smith
-            </p>
+        {/* Testimonials Section */}
+        <div className="h-screen flex justify-center items-center bg-[#F5F5F5] text-[#333333]">
+          <div className="container mx-auto p-4">
+            <h2 className="text-3xl font-playfair font-bold mb-4">What Our Members Say</h2>
+            <div className="flex flex-wrap justify-center">
+              <div className="w-1/2 md:w-1/3 lg:w-1/4 p-4">
+                <p className="text-xl font-montserrat mb-2">"Best gym I've ever been to!"</p>
+                <p className="text-lg font-montserrat">- John D.</p>
+              </div>
+              <div className="w-1/2 md:w-1/3 lg:w-1/4 p-4">
+                <p className="text-xl font-montserrat mb-2">"The equipment is top-notch!"</p>
+                <p className="text-lg font-montserrat">- Jane D.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
 
-      {/* Pricing Section */}
-      <section className="py-12 md:py-16 lg:py-20">
-        <h2 className="text-3xl md:text-5xl lg:text-7xl font-playfair font-bold text-center mb-4 md:mb-6 lg:mb-8">
-          Membership Plans
-        </h2>
-        <div className="flex flex-wrap justify-center mb-8 md:mb-10 lg:mb-12">
-          <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-6 lg:px-8 mb-8 md:mb-10 lg:mb-12">
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4 lg:mb-6">
-              Basic
-            </h3>
-            <p className="text-lg md:text-xl lg:text-2xl">
-              $29.99/month
-            </p>
-            <ul>
-              <li>Access to gym equipment</li>
-              <li>Group fitness classes</li>
-            </ul>
-          </div>
-          <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-6 lg:px-8 mb-8 md:mb-10 lg:mb-12">
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4 lg:mb-6">
-              Premium
-            </h3>
-            <p className="text-lg md:text-xl lg:text-2xl">
-              $49.99/month
-            </p>
-            <ul>
-              <li>Access to gym equipment</li>
-              <li>Group fitness classes</li>
-              <li>Personalized training programs</li>
-            </ul>
-          </div>
-          <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-6 lg:px-8 mb-8 md:mb-10 lg:mb-12">
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4 lg:mb-6">
-              Elite
-            </h3>
-            <p className="text-lg md:text-xl lg:text-2xl">
-              $99.99/month
-            </p>
-            <ul>
-              <li>Access to gym equipment</li>
-              <li>Group fitness classes</li>
-              <li>Personalized training programs</li>
-              <li>Nutrition advice</li>
-            </ul>
+        {/* Pricing and Membership Plans Section */}
+        <div className="h-screen flex justify-center items-center bg-[#B1B1B1] text-[#333333]">
+          <div className="container mx-auto p-4">
+            <h2 className="text-3xl font-playfair font-bold mb-4">Membership Plans</h2>
+            <div className="flex flex-wrap justify-center">
+              <div className="w-1/2 md:w-1/3 lg:w-1/4 p-4 bg-[#F5F5F5] rounded">
+                <h3 className="text-2xl font-montserrat font-bold mb-2">Basic</h3>
+                <p className="text-lg font-montserrat mb-2">$99/month</p>
+                <button className="bg-[#8B0A1A] hover:bg-[#8B0A1A] text-[#F5F5F5] font-bold py-2 px-4 rounded">Sign Up</button>
+              </div>
+              <div className="w-1/2 md:w-1/3 lg:w-1/4 p-4 bg-[#F5F5F5] rounded">
+                <h3 className="text-2xl font-montserrat font-bold mb-2">Premium</h3>
+                <p className="text-lg font-montserrat mb-2">$199/month</p>
+                <button className="bg-[#8B0A1A] hover:bg-[#8B0A1A] text-[#F5F5F5] font-bold py-2 px-4 rounded">Sign Up</button>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
 
-      {/* Contact Section */}
-      <section className="bg-[#0F172A] text-white py-12 md:py-16 lg:py-20">
-        <h2 className="text-3xl md:text-5xl lg:text-7xl font-playfair font-bold text-center mb-4 md:mb-6 lg:mb-8">
-          Get in Touch
-        </h2>
-        <div className="flex flex-wrap justify-center mb-8 md:mb-10 lg:mb-12">
-          <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-6 lg:px-8 mb-8 md:mb-10 lg:mb-12">
-            <p className="text-lg md:text-xl lg:text-2xl">
-              Address: 123 Main St, Anytown, USA
-            </p>
-            <p className="text-lg md:text-xl lg:text-2xl">
-              Phone: 555-555-5555
-            </p>
-            <p className="text-lg md:text-xl lg:text-2xl">
-              Email: <a href="mailto:info@fitnesshub.com" className="text-white">info@fitnesshub.com</a>
-            </p>
-          </div>
-          <div className="w-full md:w-1/2 lg:w-1/3 px-4 md:px-6 lg:px-8 mb-8 md:mb-10 lg:mb-12">
-            <form>
-              <input type="text" placeholder="Name" className="w-full mb-4 md:mb-6 lg:mb-8" />
-              <input type="email" placeholder="Email" className="w-full mb-4 md:mb-6 lg:mb-8" />
-              <textarea placeholder="Message" className="w-full mb-4 md:mb-6 lg:mb-8" />
-              <button className="bg-[#7E22CE] hover:bg-[#06B6D4] text-white font-bold py-2 px-4 rounded">
-                Send Message
-              </button>
-            </form>
+        {/* Call-to-Action Section */}
+        <div className="h-screen flex justify-center items-center bg-[#333333] text-[#F5F5F5]">
+          <div className="container mx-auto p-4">
+            <h2 className="text-3xl font-playfair font-bold mb-4">Get Started Today!</h2>
+            <button className="bg-[#8B0A1A] hover:bg-[#8B0A1A] text-[#F5F5F5] font-bold py-2 px-4 rounded">Join Now</button>
           </div>
         </div>
-      </section>
 
-      {/* Footer Section */}
-      <footer className="bg-[#0F172A] text-white py-4 md:py-6 lg:py-8">
-        <p className="text-sm md:text-lg lg:text-xl text-center">
-          &copy; 2023 Fitness Hub. All rights reserved.
-        </p>
-      </footer>
+        {/* Footer Section */}
+        <div className="h-20 flex justify-center items-center bg-[#0F0F0F] text-[#F5F5F5]">
+          <div className="container mx-auto p-4">
+            <p className="text-lg font-montserrat mb-2">&copy; 2024 Luxury Gym</p>
+            <div className="flex flex-wrap justify-center">
+              <a href="#" className="text-lg font-montserrat mx-2">Contact Us</a>
+              <a href="#" className="text-lg font-montserrat mx-2">Facebook</a>
+              <a href="#" className="text-lg font-montserrat mx-2">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
