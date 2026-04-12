@@ -1,93 +1,100 @@
-// pages/api/classes.js
+```javascript
+// app/api/trainings.js
 export async function GET(request: Request) {
   try {
     const { supabase } = require('../../../utils/supabaseConfig');
     const { data, error } = await supabase
-      .from('classes')
+      .from('trainings')
       .select('id, name, description');
     if (error) throw new Error(error.message);
     return NextResponse.json({ data: data }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ data: null, error: error.message }, { status: 500 });
+    return NextResponse.json({ data: null, error: 'Failed to retrieve trainings' }, { status: 500 });
   }
 }
-
 export async function POST(request: Request) {
   try {
     const { supabase } = require('../../../utils/supabaseConfig');
-    const { data, error } = await supabase.from('classes').insert(request.body);
+    const { name, description } = await request.json();
+    const { data, error } = await supabase
+      .from('trainings')
+      .insert({ name, description });
     if (error) throw new Error(error.message);
     return NextResponse.json({ data: data }, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ data: null, error: error.message }, { status: 500 });
+    return NextResponse.json({ data: null, error: 'Failed to create training' }, { status: 500 });
   }
 }
-// pages/api/classes/[classId].js
+// app/api/classes.js
 export async function GET(request: Request) {
   try {
     const { supabase } = require('../../../utils/supabaseConfig');
-    const classId = request.params.classId;
-    const { data, error } = await supabase
+    const { query } = request;
+    const { training_id } = query;
+    let queryBuilder = supabase
       .from('classes')
-      .select('id, name, description')
-      .eq('id', classId);
-    if (error) throw new Error(error.message);
-    if (data.length === 0) {
-      return NextResponse.json({ data: null, error: 'Class not found' }, { status: 404 });
+      .select('id, name, description, training_id');
+    if (training_id) {
+      queryBuilder = queryBuilder.eq('training_id', training_id);
     }
-    return NextResponse.json({ data: data[0] }, { status: 200 });
-  } catch (error) {
-    return NextResponse.json({ data: null, error: error.message }, { status: 500 });
-  }
-}
-
-export async function PUT(request: Request) {
-  try {
-    const { supabase } = require('../../../utils/supabaseConfig');
-    const classId = request.params.classId;
-    const { data, error } = await supabase
-      .from('classes')
-      .update(request.body)
-      .eq('id', classId);
+    const { data, error } = await queryBuilder;
     if (error) throw new Error(error.message);
     return NextResponse.json({ data: data }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ data: null, error: error.message }, { status: 500 });
+    return NextResponse.json({ data: null, error: 'Failed to retrieve classes' }, { status: 500 });
   }
 }
-
-export async function DELETE(request: Request) {
+export async function POST(request: Request) {
   try {
     const { supabase } = require('../../../utils/supabaseConfig');
-    const classId = request.params.classId;
-    const { error } = await supabase.from('classes').delete().eq('id', classId);
+    const { name, description, training_id } = await request.json();
+    const { data, error } = await supabase
+      .from('classes')
+      .insert({ name, description, training_id });
     if (error) throw new Error(error.message);
-    return NextResponse.json({ data: null, error: 'Class deleted' }, { status: 200 });
+    return NextResponse.json({ data: data }, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ data: null, error: error.message }, { status: 500 });
+    return NextResponse.json({ data: null, error: 'Failed to create class' }, { status: 500 });
   }
 }
-// pages/api/training-plans.js
+// app/api/training-plans.js
 export async function GET(request: Request) {
   try {
     const { supabase } = require('../../../utils/supabaseConfig');
+    const { user_id } = await request.cookies.get('user_id');
     const { data, error } = await supabase
       .from('training_plans')
-      .select('id, name, description');
+      .select('id, user_id, training_id, start_date, end_date')
+      .eq('user_id', user_id);
     if (error) throw new Error(error.message);
     return NextResponse.json({ data: data }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ data: null, error: error.message }, { status: 500 });
+    return NextResponse.json({ data: null, error: 'Failed to retrieve training plans' }, { status: 500 });
   }
 }
-
 export async function POST(request: Request) {
   try {
     const { supabase } = require('../../../utils/supabaseConfig');
-    const { data, error } = await supabase.from('training_plans').insert(request.body);
+    const { user_id, training_id, start_date, end_date } = await request.json();
+    const { data, error } = await supabase
+      .from('training_plans')
+      .insert({ user_id, training_id, start_date, end_date });
     if (error) throw new Error(error.message);
     return NextResponse.json({ data: data }, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ data: null, error: error.message }, { status: 500 });
+    return NextResponse.json({ data: null, error: 'Failed to create training plan' }, { status: 500 });
   }
 }
+// app/api/booking.js
+export async function GET(request: Request) {
+  try {
+    const { supabase } = require('../../../utils/supabaseConfig');
+    const { user_id } = await request.cookies.get('user_id');
+    const { data, error } = await supabase
+      .from('bookings')
+      .select('id, user_id, class_id, start_time, end_time')
+      .eq('user_id', user_id);
+    if (error) throw new Error(error.message);
+    return NextResponse.json({ data: data }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ data: null, error: 'Failed to retrieve bookings' }, { status:
