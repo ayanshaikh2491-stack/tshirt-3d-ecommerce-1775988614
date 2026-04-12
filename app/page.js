@@ -1,137 +1,170 @@
-// pages/page.js
-
+// pages/index.js
 import Head from 'next/head';
-import Script from 'next/script';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import styles from '../styles/Page.module.scss';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Hero from '../components/Hero';
-import Benefits from '../components/Benefits';
-import Features from '../components/Features';
-import CallToAction from '../components/CallToAction';
-import FooterSection from '../components/FooterSection';
+import { Fragment } from 'react';
+import Navbar from '../components/navbar';
+import Hero from '../components/hero';
+import About from '../components/about';
+import Services from '../components/services';
+import Testimonials from '../components/testimonials';
+import Contact from '../components/contact';
+import Footer from '../components/footer';
 
-export default function Page() {
-  const router = useRouter();
-
+export default function Home() {
   return (
-    <div className={styles.container}>
+    <Fragment>
       <Head>
-        <title>Gym Landing Page</title>
-        <meta name="description" content="Modern gym landing page with fitness tracking" />
+        <title>Gym Website</title>
+        <meta name="description" content="Gym website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Script
-        src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.13.0/dist/tf.min.js"
-        strategy="afterInteractive"
+      <Navbar />
+      <Hero
+        title="Get Fit with Us"
+        subtitle="Join our gym today and start your fitness journey"
+        cta="Join Now"
       />
 
-      <Header />
-      <Hero />
-      <Benefits />
-      <Features />
-      <CallToAction />
-      <FooterSection />
+      <About
+        title="Our Story"
+        text="We are a community-driven gym that helps people achieve their fitness goals"
+        image="/about.jpg"
+      />
+
+      <Services
+        title="Our Services"
+        services={[
+          {
+            title: 'Personal Training',
+            description: 'Get personalized training sessions with our experienced trainers',
+          },
+          {
+            title: 'Group Classes',
+            description: 'Join our group classes for a fun and challenging workout',
+          },
+          {
+            title: 'Equipment Room',
+            description: 'Access our state-of-the-art equipment room for a great workout',
+          },
+        ]}
+      />
+
+      <Testimonials
+        title="What Our Members Say"
+        testimonials={[
+          {
+            text:
+              'I have been a member of this gym for a year now and I can see the progress I have made',
+            name: 'John Doe',
+          },
+          {
+            text:
+              'The trainers here are very knowledgeable and helpful, they really know what they are doing',
+            name: 'Jane Doe',
+          },
+        ]}
+      />
+
+      <Contact
+        title="Get in Touch"
+        formFields={[
+          {
+            label: 'Name',
+            name: 'name',
+            type: 'text',
+          },
+          {
+            label: 'Email',
+            name: 'email',
+            type: 'email',
+          },
+          {
+            label: 'Message',
+            name: 'message',
+            type: 'textarea',
+          },
+        ]}
+      />
+
       <Footer />
-
-      <style jsx global>
-        {`
-          :root {
-            --primary-color: #3B2D70;
-            --secondary-color: #7E22CE;
-            --accent-color: #06B6D4;
-            --dark-color: #0F172A;
-            --light-color: #F8FAFC;
-          }
-
-          body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--light-color);
-            color: #333;
-          }
-
-          h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            line-height: 60px;
-            color: var(--primary-color);
-          }
-
-          @media (max-width: 768px) {
-            h1 {
-              font-size: 36px;
-              line-height: 48px;
-            }
-          }
-        `}
-      </style>
-    </div>
+    </Fragment>
   );
 }
-// components/Hero.js
+// components/navbar.js
+import Link from 'next/link';
+import { Nav } from '@chakra-ui/react';
 
-import styles from '../styles/Hero.module.scss';
-import Image from 'next/image';
-
-const Hero = () => {
+const Navbar = () => {
   return (
-    <div className={styles.hero}>
-      <div className={styles.heroContent}>
-        <h1>Welcome to Gym Land!</h1>
-        <p>Reach your fitness goals with our expert trainers and state-of-the-art equipment.</p>
-        <Link href="/training-plan">
-          <a className={styles.button}>Start Your Fitness Journey</a>
-        </Link>
-      </div>
-      <div className={styles.heroImage}>
-        <Image src="/fitness-tracker.png" width={300} height={300} />
-      </div>
-    </div>
+    <Nav
+      bg="#333333"
+      color="#ffffff"
+      justify="space-between"
+      padding="1rem"
+      display="flex"
+      alignItems="center"
+    >
+      <Link href="/">
+        <a>Home</a>
+      </Link>
+      <Link href="/classes">
+        <a>Classes</a>
+      </Link>
+      <Link href="/training-plans">
+        <a>Training Plans</a>
+      </Link>
+      <Link href="/workouts">
+        <a>Workouts</a>
+      </Link>
+      <Link href="/join">
+        <a>Join</a>
+      </Link>
+    </Nav>
+  );
+};
+
+export default Navbar;
+// components/hero.js
+import Image from 'next/image';
+import { Flex } from '@chakra-ui/react';
+
+const Hero = ({ title, subtitle, cta }) => {
+  return (
+    <Flex
+      bg="#8B9467"
+      color="#ffffff"
+      justifyContent="center"
+      alignItems="center"
+      padding="5rem"
+      direction="column"
+    >
+      <h1>{title}</h1>
+      <p>{subtitle}</p>
+      <button>{cta}</button>
+    </Flex>
   );
 };
 
 export default Hero;
-// components/Benefits.js
+// components/about.js
+import Image from 'next/image';
+import { Flex } from '@chakra-ui/react';
 
-import styles from '../styles/Benefits.module.scss';
-import { FaDumbbell, FaUserCheck, FaLock } from 'react-icons/fa';
-
-const Benefits = () => {
+const About = ({ title, text, image }) => {
   return (
-    <div className={styles.benefits}>
-      <h2>Our Benefits</h2>
-      <div className={styles.benefit}>
-        <div className={styles.benefitIcon}>
-          <FaDumbbell />
-        </div>
-        <div className={styles.benefitContent}>
-          <h3>State-of-the-Art Equipment</h3>
-          <p>Our gym is equipped with the latest fitness equipment to help you reach your goals.</p>
-        </div>
-      </div>
-      <div className={styles.benefit}>
-        <div className={styles.benefitIcon}>
-          <FaUserCheck />
-        </div>
-        <div className={styles.benefitContent}>
-          <h3>Expert Trainers</h3>
-          <p>Our trainers are experienced and certified to help you achieve your fitness goals.</p>
-        </div>
-      </div>
-      <div className={styles.benefit}>
-        <div className={styles.benefitIcon}>
-          <FaLock />
-        </div>
-        <div className={styles.benefitContent}>
-          <h3>Secure and Clean Environment</h3>
-          <p>Our gym is clean and secure, providing a comfortable environment for your workouts.</p>
-        </div>
-      </div>
-    </div>
+    <Flex
+      bg="#455A64"
+      color="#ffffff"
+      justifyContent="center"
+      alignItems="center"
+      padding="5rem"
+      direction="column"
+    >
+      <h1>{title}</h1>
+      <p>{text}</p>
+      <Image src={image} alt={title} />
+    </Flex>
   );
 };
 
-export default Benefits;
+export default About;
