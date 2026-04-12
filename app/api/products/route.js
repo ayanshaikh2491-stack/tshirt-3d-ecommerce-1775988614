@@ -1,9 +1,8 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { supabase } from '../../../utils/supabaseConfig';
-import { Product } from '../../../types/product';
+const { getSupabase } = require('../../../utils/supabaseConfig');
 
 export async function GET() {
   try {
+    const supabase = getSupabase();
     const { data, error } = await supabase
       .from('products')
       .select('*');
@@ -25,8 +24,9 @@ export async function GET() {
   }
 }
 
-export async function POST(request: NextApiRequest) {
+export async function POST(request) {
   try {
+    const supabase = getSupabase();
     const { name, description, price } = await request.json();
     const { data, error } = await supabase
       .from('products')
