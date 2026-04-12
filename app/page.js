@@ -2,76 +2,111 @@ import Head from 'next/head';
 
 export default function Home() {
   return (
-    <div>
+    <div className="h-screen flex flex-col">
       <Head>
         <title>Luxury Gym</title>
-        <meta name="description" content="Luxury Gym Website" />
       </Head>
-      <div className="h-screen flex flex-col">
-        {/* Hero Section */}
-        <div className="h-screen flex justify-center items-center bg-[#333333] text-[#F5F5F5]">
-          <div className="container mx-auto p-4">
-            <h1 className="text-5xl font-playfair font-bold mb-4">Luxury Gym</h1>
-            <p className="text-2xl font-montserrat mb-8">Experience the finest in fitness</p>
-            <button className="bg-[#8B0A1A] hover:bg-[#8B0A1A] text-[#F5F5F5] font-bold py-2 px-4 rounded">Join Now</button>
-          </div>
-        </div>
 
-        {/* Testimonials Section */}
-        <div className="h-screen flex justify-center items-center bg-[#F5F5F5] text-[#333333]">
-          <div className="container mx-auto p-4">
-            <h2 className="text-3xl font-playfair font-bold mb-4">What Our Members Say</h2>
-            <div className="flex flex-wrap justify-center">
-              <div className="w-1/2 md:w-1/3 lg:w-1/4 p-4">
-                <p className="text-xl font-montserrat mb-2">"Best gym I've ever been to!"</p>
-                <p className="text-lg font-montserrat">- John D.</p>
-              </div>
-              <div className="w-1/2 md:w-1/3 lg:w-1/4 p-4">
-                <p className="text-xl font-montserrat mb-2">"The equipment is top-notch!"</p>
-                <p className="text-lg font-montserrat">- Jane D.</p>
-              </div>
-            </div>
-          </div>
+      {/* Hero Section */}
+      <div className="relative h-screen">
+        <video
+          autoPlay
+          loop
+          muted
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          src="https://example.com/gym-video.mp4"
+        />
+        <div className="absolute top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
+          <h1 className="text-5xl font-playfair text-white">Luxury Gym</h1>
         </div>
+      </div>
 
-        {/* Pricing and Membership Plans Section */}
-        <div className="h-screen flex justify-center items-center bg-[#B1B1B1] text-[#333333]">
-          <div className="container mx-auto p-4">
-            <h2 className="text-3xl font-playfair font-bold mb-4">Membership Plans</h2>
-            <div className="flex flex-wrap justify-center">
-              <div className="w-1/2 md:w-1/3 lg:w-1/4 p-4 bg-[#F5F5F5] rounded">
-                <h3 className="text-2xl font-montserrat font-bold mb-2">Basic</h3>
-                <p className="text-lg font-montserrat mb-2">$99/month</p>
-                <button className="bg-[#8B0A1A] hover:bg-[#8B0A1A] text-[#F5F5F5] font-bold py-2 px-4 rounded">Sign Up</button>
-              </div>
-              <div className="w-1/2 md:w-1/3 lg:w-1/4 p-4 bg-[#F5F5F5] rounded">
-                <h3 className="text-2xl font-montserrat font-bold mb-2">Premium</h3>
-                <p className="text-lg font-montserrat mb-2">$199/month</p>
-                <button className="bg-[#8B0A1A] hover:bg-[#8B0A1A] text-[#F5F5F5] font-bold py-2 px-4 rounded">Sign Up</button>
-              </div>
-            </div>
+      {/* Membership Plans Section */}
+      <div className="py-20 bg-gray-100">
+        <h2 className="text-3xl font-montserrat text-gray-600 text-center mb-10">
+          Membership Plans
+        </h2>
+        <div className="flex justify-center">
+          <div className="bg-white shadow-md p-10 w-80 mx-5">
+            <h3 className="text-2xl font-montserrat text-gray-600 mb-5">
+              Basic
+            </h3>
+            <p className="text-gray-600 mb-5">$99/month</p>
+            <button className="bg-gray-900 text-white py-2 px-5 rounded hover:bg-gray-700">
+              Sign Up
+            </button>
+          </div>
+          <div className="bg-white shadow-md p-10 w-80 mx-5">
+            <h3 className="text-2xl font-montserrat text-gray-600 mb-5">
+              Premium
+            </h3>
+            <p className="text-gray-600 mb-5">$199/month</p>
+            <button className="bg-gray-900 text-white py-2 px-5 rounded hover:bg-gray-700">
+              Sign Up
+            </button>
           </div>
         </div>
+      </div>
 
-        {/* Call-to-Action Section */}
-        <div className="h-screen flex justify-center items-center bg-[#333333] text-[#F5F5F5]">
-          <div className="container mx-auto p-4">
-            <h2 className="text-3xl font-playfair font-bold mb-4">Get Started Today!</h2>
-            <button className="bg-[#8B0A1A] hover:bg-[#8B0A1A] text-[#F5F5F5] font-bold py-2 px-4 rounded">Join Now</button>
+      {/* Facilities Showcase Section */}
+      <div className="py-20 bg-white">
+        <h2 className="text-3xl font-montserrat text-gray-600 text-center mb-10">
+          Facilities
+        </h2>
+        <div className="flex justify-center">
+          <div className="w-80 mx-5">
+            <img
+              src="https://example.com/gym-facilities.jpg"
+              alt="Gym Facilities"
+              className="w-full h-64 object-cover"
+            />
+          </div>
+          <div className="w-80 mx-5">
+            <img
+              src="https://example.com/gym-facilities-2.jpg"
+              alt="Gym Facilities"
+              className="w-full h-64 object-cover"
+            />
           </div>
         </div>
+      </div>
 
-        {/* Footer Section */}
-        <div className="h-20 flex justify-center items-center bg-[#0F0F0F] text-[#F5F5F5]">
-          <div className="container mx-auto p-4">
-            <p className="text-lg font-montserrat mb-2">&copy; 2024 Luxury Gym</p>
-            <div className="flex flex-wrap justify-center">
-              <a href="#" className="text-lg font-montserrat mx-2">Contact Us</a>
-              <a href="#" className="text-lg font-montserrat mx-2">Facebook</a>
-              <a href="#" className="text-lg font-montserrat mx-2">Instagram</a>
-            </div>
+      {/* Testimonials Section */}
+      <div className="py-20 bg-gray-100">
+        <h2 className="text-3xl font-montserrat text-gray-600 text-center mb-10">
+          Testimonials
+        </h2>
+        <div className="flex justify-center">
+          <div className="bg-white shadow-md p-10 w-80 mx-5">
+            <p className="text-gray-600 mb-5">
+              "I've never felt better since joining this gym!"
+            </p>
+            <p className="text-gray-600">- John Doe</p>
+          </div>
+          <div className="bg-white shadow-md p-10 w-80 mx-5">
+            <p className="text-gray-600 mb-5">
+              "The trainers are amazing and the facilities are top-notch!"
+            </p>
+            <p className="text-gray-600">- Jane Doe</p>
           </div>
         </div>
+      </div>
+
+      {/* Call-to-action Button */}
+      <div className="py-10 bg-gray-900 text-center">
+        <button className="bg-gray-100 text-gray-900 py-2 px-5 rounded hover:bg-gray-200">
+          Get Started
+        </button>
+      </div>
+
+      {/* Footer Section */}
+      <div className="py-10 bg-gray-100 text-center">
+        <p className="text-gray-600 mb-5">
+          2023 Luxury Gym. All rights reserved.
+        </p>
+        <p className="text-gray-600">
+          Contact us: <a href="mailto:info@luxurygym.com">info@luxurygym.com</a>
+        </p>
       </div>
     </div>
   );
