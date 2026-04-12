@@ -1,37 +1,137 @@
-import React from 'react';
+// pages/page.js
+
+import Head from 'next/head';
+import Script from 'next/script';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import styles from '../styles/Page.module.scss';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Hero from '../components/Hero';
+import Benefits from '../components/Benefits';
+import Features from '../components/Features';
+import CallToAction from '../components/CallToAction';
+import FooterSection from '../components/FooterSection';
 
 export default function Page() {
+  const router = useRouter();
+
   return (
-    <main className="bg-parchment h-screen">
-      <div className="max-w-7xl mx-auto p-4 md:p-6 lg:p-8">
-        <section className="text-center">
-          <h1 className="text-4xl font-bold text-[#FFC499]">Frontend Generation Skill</h1>
-          <p className="text-lg text-gray-600">Unlock Your Potential with Next.js</p>
-        </section>
+    <div className={styles.container}>
+      <Head>
+        <title>Gym Landing Page</title>
+        <meta name="description" content="Modern gym landing page with fitness tracking" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-        <section className="mt-12">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <div className="bg-white shadow-md rounded-lg p-4">
-              <h2 className="text-2xl font-bold text-[#FFC499]">Analytics</h2>
-              <p className="text-lg text-gray-600">Track Your Progress and Optimize Your Workflow</p>
-            </div>
-            <div className="bg-white shadow-md rounded-lg p-4">
-              <h2 className="text-2xl font-bold text-[#FFC499]">User Management</h2>
-              <p className="text-lg text-gray-600">Effortlessly Manage Your Team and Users</p>
-            </div>
-            <div className="bg-white shadow-md rounded-lg p-4">
-              <h2 className="text-2xl font-bold text-[#FFC499]">Billing</h2>
-              <p className="text-lg text-gray-600">Streamline Your Invoicing and Payment Processes</p>
-            </div>
-          </div>
-        </section>
+      <Script
+        src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.13.0/dist/tf.min.js"
+        strategy="afterInteractive"
+      />
 
-        <section className="mt-12">
-          <button className="bg-[#FFC499] hover:bg-[#FF9900] text-white font-bold py-2 px-4 rounded">
-            Get Started
-          </button>
-        </section>
-      </div>
-    </main>
+      <Header />
+      <Hero />
+      <Benefits />
+      <Features />
+      <CallToAction />
+      <FooterSection />
+      <Footer />
+
+      <style jsx global>
+        {`
+          :root {
+            --primary-color: #3B2D70;
+            --secondary-color: #7E22CE;
+            --accent-color: #06B6D4;
+            --dark-color: #0F172A;
+            --light-color: #F8FAFC;
+          }
+
+          body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-color);
+            color: #333;
+          }
+
+          h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            line-height: 60px;
+            color: var(--primary-color);
+          }
+
+          @media (max-width: 768px) {
+            h1 {
+              font-size: 36px;
+              line-height: 48px;
+            }
+          }
+        `}
+      </style>
+    </div>
   );
 }
+// components/Hero.js
+
+import styles from '../styles/Hero.module.scss';
+import Image from 'next/image';
+
+const Hero = () => {
+  return (
+    <div className={styles.hero}>
+      <div className={styles.heroContent}>
+        <h1>Welcome to Gym Land!</h1>
+        <p>Reach your fitness goals with our expert trainers and state-of-the-art equipment.</p>
+        <Link href="/training-plan">
+          <a className={styles.button}>Start Your Fitness Journey</a>
+        </Link>
+      </div>
+      <div className={styles.heroImage}>
+        <Image src="/fitness-tracker.png" width={300} height={300} />
+      </div>
+    </div>
+  );
+};
+
+export default Hero;
+// components/Benefits.js
+
+import styles from '../styles/Benefits.module.scss';
+import { FaDumbbell, FaUserCheck, FaLock } from 'react-icons/fa';
+
+const Benefits = () => {
+  return (
+    <div className={styles.benefits}>
+      <h2>Our Benefits</h2>
+      <div className={styles.benefit}>
+        <div className={styles.benefitIcon}>
+          <FaDumbbell />
+        </div>
+        <div className={styles.benefitContent}>
+          <h3>State-of-the-Art Equipment</h3>
+          <p>Our gym is equipped with the latest fitness equipment to help you reach your goals.</p>
+        </div>
+      </div>
+      <div className={styles.benefit}>
+        <div className={styles.benefitIcon}>
+          <FaUserCheck />
+        </div>
+        <div className={styles.benefitContent}>
+          <h3>Expert Trainers</h3>
+          <p>Our trainers are experienced and certified to help you achieve your fitness goals.</p>
+        </div>
+      </div>
+      <div className={styles.benefit}>
+        <div className={styles.benefitIcon}>
+          <FaLock />
+        </div>
+        <div className={styles.benefitContent}>
+          <h3>Secure and Clean Environment</h3>
+          <p>Our gym is clean and secure, providing a comfortable environment for your workouts.</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Benefits;
