@@ -1,116 +1,71 @@
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+'use client';
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col overflow-y-scroll">
       {/* Hero Section */}
-      <div className="h-screen flex justify-center items-center bg-[#212121] text-white">
-        <div className="container mx-auto p-4">
-          <h1 className="text-5xl font-black mb-4">Unleash Your Potential</h1>
-          <p className="text-lg mb-8">Join our gym and start your fitness journey today!</p>
-          <Link href="/join">
-            <a className="bg-[#FF8C00] hover:bg-[#FFA07A] text-white font-bold py-2 px-4 rounded">
-              Join Now
-            </a>
-          </Link>
+      <div className="h-screen flex justify-center items-center bg-[#3B2D70] text-white">
+        <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12 xl:p-24">
+          <h1 className="text-5xl font-bold mb-4">Get Fit with Us</h1>
+          <p className="text-xl mb-8">Join our gym and start your fitness journey today!</p>
+          <button className="bg-[#7E22CE] hover:bg-[#06B6D4] text-white font-bold py-2 px-4 rounded">
+            Join Now
+          </button>
         </div>
       </div>
 
-      {/* Features Section */}
-      <div className="bg-[#F8FAFC] py-12">
-        <div className="container mx-auto p-4">
-          <h2 className="text-3xl font-bold mb-4">Our Features</h2>
-          <div className="flex flex-wrap justify-center">
-            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
-              <h3 className="text-xl font-bold mb-2">State-of-the-Art Equipment</h3>
-              <p className="text-lg">Our gym is equipped with the latest and greatest equipment to help you reach your fitness goals.</p>
-            </div>
-            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
-              <h3 className="text-xl font-bold mb-2">Expert Trainers</h3>
-              <p className="text-lg">Our trainers are experienced and dedicated to helping you achieve your fitness goals.</p>
-            </div>
-            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
-              <h3 className="text-xl font-bold mb-2">Clean and Safe Environment</h3>
-              <p className="text-lg">We pride ourselves on maintaining a clean and safe environment for all our members.</p>
-            </div>
-          </div>
+      {/* About Us */}
+      <div className="bg-[#F8FAFC] text-[#0F172A] p-4 pt-6 md:p-6 lg:p-12 xl:p-24">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold mb-4">About Us</h2>
+          <p className="text-xl mb-8">We are a state-of-the-art gym with experienced trainers and a supportive community.</p>
         </div>
       </div>
 
-      {/* Testimonials Section */}
-      <div className="bg-[#0F172A] py-12">
-        <div className="container mx-auto p-4">
-          <h2 className="text-3xl font-bold mb-4 text-white">What Our Members Say</h2>
-          <div className="flex flex-wrap justify-center">
-            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
-              <p className="text-lg text-white">"I've never felt more motivated to work out! The trainers are amazing and the equipment is top-notch."</p>
-              <p className="text-lg text-white font-bold">- John D.</p>
-            </div>
-            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
-              <p className="text-lg text-white">"I was hesitant to join a gym, but the staff at this gym made me feel so welcome and supported. I love it here!"</p>
-              <p className="text-lg text-white font-bold">- Emily K.</p>
-            </div>
-            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
-              <p className="text-lg text-white">"I've seen amazing results since joining this gym. The classes are fun and challenging, and the trainers are always available to help."</p>
-              <p className="text-lg text-white font-bold">- David L.</p>
-            </div>
-          </div>
+      {/* Classes and Schedules */}
+      <div className="bg-[#0F172A] text-white p-4 pt-6 md:p-6 lg:p-12 xl:p-24">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold mb-4">Classes and Schedules</h2>
+          <ul className="list-none mb-8">
+            <li className="mb-4">Monday: Yoga (6:00 AM - 7:00 AM)</li>
+            <li className="mb-4">Tuesday: Weightlifting (7:00 AM - 8:00 AM)</li>
+            <li className="mb-4">Wednesday: Cardio (8:00 AM - 9:00 AM)</li>
+          </ul>
         </div>
       </div>
 
-      {/* Pricing Section */}
-      <div className="bg-[#F8FAFC] py-12">
-        <div className="container mx-auto p-4">
-          <h2 className="text-3xl font-bold mb-4">Pricing Plans</h2>
-          <div className="flex flex-wrap justify-center">
-            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
-              <h3 className="text-xl font-bold mb-2">Basic</h3>
-              <p className="text-lg">$29.99/month</p>
-              <ul>
-                <li>Access to gym equipment</li>
-                <li>Group fitness classes</li>
-              </ul>
-            </div>
-            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
-              <h3 className="text-xl font-bold mb-2">Premium</h3>
-              <p className="text-lg">$49.99/month</p>
-              <ul>
-                <li>Access to gym equipment</li>
-                <li>Group fitness classes</li>
-                <li>Personal training sessions</li>
-              </ul>
-            </div>
-            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
-              <h3 className="text-xl font-bold mb-2">Elite</h3>
-              <p className="text-lg">$99.99/month</p>
-              <ul>
-                <li>Access to gym equipment</li>
-                <li>Group fitness classes</li>
-                <li>Personal training sessions</li>
-                <li>Priority access to equipment and classes</li>
-              </ul>
-            </div>
-          </div>
+      {/* Membership Plans */}
+      <div className="bg-[#F8FAFC] text-[#0F172A] p-4 pt-6 md:p-6 lg:p-12 xl:p-24">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold mb-4">Membership Plans</h2>
+          <ul className="list-none mb-8">
+            <li className="mb-4">Basic: $29.99/month</li>
+            <li className="mb-4">Premium: $49.99/month</li>
+            <li className="mb-4">Elite: $99.99/month</li>
+          </ul>
         </div>
       </div>
 
-      {/* Call-to-Action Button */}
-      <div className="bg-[#212121] py-12">
-        <div className="container mx-auto p-4">
-          <Link href="/join">
-            <a className="bg-[#FF8C00] hover:bg-[#FFA07A] text-white font-bold py-2 px-4 rounded">
-              Join Now
-            </a>
-          </Link>
+      {/* Testimonials */}
+      <div className="bg-[#0F172A] text-white p-4 pt-6 md:p-6 lg:p-12 xl:p-24">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold mb-4">Testimonials</h2>
+          <p className="text-xl mb-8">"I've lost 20 pounds since joining this gym! The trainers are amazing and the community is so supportive." - John D.</p>
+        </div>
+      </div>
+
+      {/* Contact Us */}
+      <div className="bg-[#F8FAFC] text-[#0F172A] p-4 pt-6 md:p-6 lg:p-12 xl:p-24">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
+          <p className="text-xl mb-8">Phone: 555-555-5555 | Email: <a href="mailto:info@example.com">info@example.com</a></p>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="bg-[#0F172A] py-4">
-        <div className="container mx-auto p-4">
-          <p className="text-lg text-white">&copy; 2024 Gym Website</p>
+      <div className="bg-[#3B2D70] text-white p-4 pt-6 md:p-6 lg:p-12 xl:p-24">
+        <div className="container mx-auto">
+          <p className="text-xl mb-8">&copy; 2024 Example Gym. All rights reserved.</p>
         </div>
       </div>
     </div>
