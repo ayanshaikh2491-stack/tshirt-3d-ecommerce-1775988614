@@ -1,112 +1,117 @@
-import Head from 'next/head';
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   return (
     <div className="h-screen flex flex-col">
-      <Head>
-        <title>Luxury Gym</title>
-      </Head>
-
       {/* Hero Section */}
-      <div className="relative h-screen">
-        <video
-          autoPlay
-          loop
-          muted
-          className="absolute top-0 left-0 w-full h-full object-cover"
-          src="https://example.com/gym-video.mp4"
-        />
-        <div className="absolute top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
-          <h1 className="text-5xl font-playfair text-white">Luxury Gym</h1>
+      <div className="h-screen flex justify-center items-center bg-[#212121] text-white">
+        <div className="container mx-auto p-4">
+          <h1 className="text-5xl font-black mb-4">Unleash Your Potential</h1>
+          <p className="text-lg mb-8">Join our gym and start your fitness journey today!</p>
+          <Link href="/join">
+            <a className="bg-[#FF8C00] hover:bg-[#FFA07A] text-white font-bold py-2 px-4 rounded">
+              Join Now
+            </a>
+          </Link>
         </div>
       </div>
 
-      {/* Membership Plans Section */}
-      <div className="py-20 bg-gray-100">
-        <h2 className="text-3xl font-montserrat text-gray-600 text-center mb-10">
-          Membership Plans
-        </h2>
-        <div className="flex justify-center">
-          <div className="bg-white shadow-md p-10 w-80 mx-5">
-            <h3 className="text-2xl font-montserrat text-gray-600 mb-5">
-              Basic
-            </h3>
-            <p className="text-gray-600 mb-5">$99/month</p>
-            <button className="bg-gray-900 text-white py-2 px-5 rounded hover:bg-gray-700">
-              Sign Up
-            </button>
-          </div>
-          <div className="bg-white shadow-md p-10 w-80 mx-5">
-            <h3 className="text-2xl font-montserrat text-gray-600 mb-5">
-              Premium
-            </h3>
-            <p className="text-gray-600 mb-5">$199/month</p>
-            <button className="bg-gray-900 text-white py-2 px-5 rounded hover:bg-gray-700">
-              Sign Up
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Facilities Showcase Section */}
-      <div className="py-20 bg-white">
-        <h2 className="text-3xl font-montserrat text-gray-600 text-center mb-10">
-          Facilities
-        </h2>
-        <div className="flex justify-center">
-          <div className="w-80 mx-5">
-            <img
-              src="https://example.com/gym-facilities.jpg"
-              alt="Gym Facilities"
-              className="w-full h-64 object-cover"
-            />
-          </div>
-          <div className="w-80 mx-5">
-            <img
-              src="https://example.com/gym-facilities-2.jpg"
-              alt="Gym Facilities"
-              className="w-full h-64 object-cover"
-            />
+      {/* Features Section */}
+      <div className="bg-[#F8FAFC] py-12">
+        <div className="container mx-auto p-4">
+          <h2 className="text-3xl font-bold mb-4">Our Features</h2>
+          <div className="flex flex-wrap justify-center">
+            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
+              <h3 className="text-xl font-bold mb-2">State-of-the-Art Equipment</h3>
+              <p className="text-lg">Our gym is equipped with the latest and greatest equipment to help you reach your fitness goals.</p>
+            </div>
+            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
+              <h3 className="text-xl font-bold mb-2">Expert Trainers</h3>
+              <p className="text-lg">Our trainers are experienced and dedicated to helping you achieve your fitness goals.</p>
+            </div>
+            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
+              <h3 className="text-xl font-bold mb-2">Clean and Safe Environment</h3>
+              <p className="text-lg">We pride ourselves on maintaining a clean and safe environment for all our members.</p>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Testimonials Section */}
-      <div className="py-20 bg-gray-100">
-        <h2 className="text-3xl font-montserrat text-gray-600 text-center mb-10">
-          Testimonials
-        </h2>
-        <div className="flex justify-center">
-          <div className="bg-white shadow-md p-10 w-80 mx-5">
-            <p className="text-gray-600 mb-5">
-              "I've never felt better since joining this gym!"
-            </p>
-            <p className="text-gray-600">- John Doe</p>
-          </div>
-          <div className="bg-white shadow-md p-10 w-80 mx-5">
-            <p className="text-gray-600 mb-5">
-              "The trainers are amazing and the facilities are top-notch!"
-            </p>
-            <p className="text-gray-600">- Jane Doe</p>
+      <div className="bg-[#0F172A] py-12">
+        <div className="container mx-auto p-4">
+          <h2 className="text-3xl font-bold mb-4 text-white">What Our Members Say</h2>
+          <div className="flex flex-wrap justify-center">
+            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
+              <p className="text-lg text-white">"I've never felt more motivated to work out! The trainers are amazing and the equipment is top-notch."</p>
+              <p className="text-lg text-white font-bold">- John D.</p>
+            </div>
+            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
+              <p className="text-lg text-white">"I was hesitant to join a gym, but the staff at this gym made me feel so welcome and supported. I love it here!"</p>
+              <p className="text-lg text-white font-bold">- Emily K.</p>
+            </div>
+            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
+              <p className="text-lg text-white">"I've seen amazing results since joining this gym. The classes are fun and challenging, and the trainers are always available to help."</p>
+              <p className="text-lg text-white font-bold">- David L.</p>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Call-to-action Button */}
-      <div className="py-10 bg-gray-900 text-center">
-        <button className="bg-gray-100 text-gray-900 py-2 px-5 rounded hover:bg-gray-200">
-          Get Started
-        </button>
+      {/* Pricing Section */}
+      <div className="bg-[#F8FAFC] py-12">
+        <div className="container mx-auto p-4">
+          <h2 className="text-3xl font-bold mb-4">Pricing Plans</h2>
+          <div className="flex flex-wrap justify-center">
+            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
+              <h3 className="text-xl font-bold mb-2">Basic</h3>
+              <p className="text-lg">$29.99/month</p>
+              <ul>
+                <li>Access to gym equipment</li>
+                <li>Group fitness classes</li>
+              </ul>
+            </div>
+            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
+              <h3 className="text-xl font-bold mb-2">Premium</h3>
+              <p className="text-lg">$49.99/month</p>
+              <ul>
+                <li>Access to gym equipment</li>
+                <li>Group fitness classes</li>
+                <li>Personal training sessions</li>
+              </ul>
+            </div>
+            <div className="w-full md:w-1/2 xl:w-1/3 p-6">
+              <h3 className="text-xl font-bold mb-2">Elite</h3>
+              <p className="text-lg">$99.99/month</p>
+              <ul>
+                <li>Access to gym equipment</li>
+                <li>Group fitness classes</li>
+                <li>Personal training sessions</li>
+                <li>Priority access to equipment and classes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Footer Section */}
-      <div className="py-10 bg-gray-100 text-center">
-        <p className="text-gray-600 mb-5">
-          2023 Luxury Gym. All rights reserved.
-        </p>
-        <p className="text-gray-600">
-          Contact us: <a href="mailto:info@luxurygym.com">info@luxurygym.com</a>
-        </p>
+      {/* Call-to-Action Button */}
+      <div className="bg-[#212121] py-12">
+        <div className="container mx-auto p-4">
+          <Link href="/join">
+            <a className="bg-[#FF8C00] hover:bg-[#FFA07A] text-white font-bold py-2 px-4 rounded">
+              Join Now
+            </a>
+          </Link>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="bg-[#0F172A] py-4">
+        <div className="container mx-auto p-4">
+          <p className="text-lg text-white">&copy; 2024 Gym Website</p>
+        </div>
       </div>
     </div>
   );
