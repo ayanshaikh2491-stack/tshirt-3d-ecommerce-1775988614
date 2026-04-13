@@ -94,7 +94,7 @@ export default function MembershipPage() {
             onClick={() => setBillingCycle('yearly')}
             className={`px-6 py-2 text-sm font-bold uppercase transition-all ${billingCycle === 'yearly' ? 'bg-[#C0FF00] text-black' : 'text-white hover:text-[#C0FF00]'}`}
           >
-            Yearly <span className="text-[10px] opacity-70 ml-1}(-20%)</span>
+            Yearly <span className="text-[10px] opacity-70 ml-1">(-20%)</span>
           </button>
         </div>
       </div>
