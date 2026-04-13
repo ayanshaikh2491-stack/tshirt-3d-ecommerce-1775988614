@@ -1,162 +1,141 @@
 "use client";
-
-import React from 'react';
 import Link from 'next/link';
-
+import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
   const footerLinks = {
-    experience: [
-      { name: 'Private Training', href: '#' },
-      { name: 'Recovery Suite', href: '#' },
-      { name: 'Nutrition Coaching', href: '#' },
-      { name: 'Bespoke Programs', href: '#' },
+    company: [
+      { name: 'About Us', href: '/about' },
+      { name: 'Our Trainers', href: '/trainers' },
+      { name: 'Careers', href: '/careers' },
+      { name: 'Contact', href: '/contact' },
     ],
-    theClub: [
-      { name: 'Membership Tiers', href: '#' },
-      { name: 'Our Facilities', href: '#' },
-      { name: 'The Lounge', href: '#' },
-      { name: 'Corporate Wellness', href: '#' },
+    programs: [
+      { name: 'Weight Lifting', href: '/classes/weights' },
+      { name: 'HIIT Training', href: '/classes/hiit' },
+      { name: 'Yoga & Flow', href: '/classes/yoga' },
+      { name: 'Boxing', href: '/classes/boxing' },
     ],
-    connect: [
-      { name: 'Visit Us', href: '#' },
-      { name: 'Contact Concierge', href: '#' },
-      { name: 'Careers', href: '#' },
-      { name: 'Press & Media', href: '#' },
+    legal: [
+      { name: 'Privacy Policy', href: '/privacy' },
+      { name: 'Terms of Service', href: '/terms' },
+      { name: 'Membership Agreement', href: '/agreement' },
+      { name: 'Cookie Policy', href: '/cookies' },
     ],
   };
-
-  const socials = [
-    { name: 'Instagram', href: '#', icon: '📸' },
-    { name: 'LinkedIn', href: '#', icon: '💼' },
-    { name: 'X', href: '#', icon: '🐦' },
-  ];
-
   return (
-    <footer className="bg-[#0A0A0A] text-[#F2F2F2] pt-24 pb-12 relative overflow-hidden">
-      {/* Ambient Background Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#C5A059] to-transparent opacity-50" />
-      <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#C5A059] opacity-5 blur-[120px] rounded-full" />
-      
+    <footer className="bg-[#121212] text-white pt-20 pb-10 border-t-[12px] border-[#D9FF00] font-sans">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
-          
-          {/* Brand Column */}
-          <div className="col-span-1 md:col-span-2 lg:col-span-1 space-y-8">
-            <Link href="/" className="group inline-block">
-              <span className="text-3xl font-serif tracking-widest uppercase text-[#C5A059] transition-colors duration-500 group-hover:text-white cursor-pointer" style={{ fontFamily: 'Cinzel, serif' }}>
-                Aurelian<span className="text-[#F2F2F2]">Gym</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          {/* Brand Section */}
+          <div className="flex flex-col space-y-6">
+            <Link href="/" className="group">
+              <span className="text-4xl font-black italic uppercase tracking-tighter leading-none block">
+                IRON<span className="text-[#D9FF00] group-hover:text-white transition-colors duration-200">CORE</span>
+              </span>
+              <span className="text-[10px] uppercase tracking-widest text-[#4B5563] font-bold">
+                Push Past Your Limits
               </span>
             </Link>
-            <p className="text-[#F2F2F2]/60 font-sans leading-relaxed max-w-sm text-sm tracking-wide" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              Redefining the intersection of peak athletic performance and uncompromising luxury. A sanctuary for those who demand excellence in every facet of their existence.
+            <p className="text-slate-400 leading-relaxed max-w-xs font-medium">
+              The ultimate destination for those who refuse to settle. High-performance training for high-performance humans.
             </p>
-            <div className="flex gap-4">
-              {socials.map((social) => (
+            <div className="flex space-x-4">
+              {[
+                { Icon: Instagram, href: '#' },
+                { Icon: Facebook, href: '#' },
+                { Icon: Twitter, href: '#' },
+                { Icon: Youtube, href: '#' },
+              ].map(({ Icon, href }, idx) => (
                 <Link 
-                  key={social.name} 
-                  href={social.href} 
-                  className="w-10 h-10 rounded-full border border-[#262626] flex items-center justify-center transition-all duration-300 hover:border-[#C5A059] hover:text-[#C5A059] hover:-translate-y-1 bg-[#1A1A1A]"
-                  aria-label={social.name}
+                  key={idx} 
+                  href={href} 
+                  className="p-2 bg-[#4B5563]/20 hover:bg-[#D9FF00] hover:text-[#121212] transition-all duration-200 rounded-none border border-transparent hover:border-white group"
                 >
-                  <span className="text-xs">{social.icon}</span>
+                  <Icon size={20} strokeWidth={2.5} />
                 </Link>
               ))}
             </div>
           </div>
-
-          {/* Navigation Columns */}
-          <div className="grid grid-cols-2 gap-8 lg:col-span-3">
-            <div className="space-y-6">
-              <h4 className="text-[#C5A059] font-serif uppercase tracking-widest text-xs font-semibold" style={{ fontFamily: 'Cinzel, serif' }}>
-                Experience
-              </h4>
-              <ul className="space-y-4">
-                {footerLinks.experience.map((link) => (
-                  <li key={link.name}>
-                    <Link 
-                      href={link.href} 
-                      className="text-[#F2F2F2]/70 text-sm transition-all duration-300 hover:text-[#C5A059] hover:translate-x-1 flex items-center group"
-                      style={{ fontFamily: 'Montserrat, sans-serif' }}
-                    >
-                      <span className="w-0 h-px bg-[#C5A059] mr-0 transition-all duration-300 group-hover:w-4 group-hover:mr-2" />
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="space-y-6">
-              <h4 className="text-[#C5A059] font-serif uppercase tracking-widest text-xs font-semibold" style={{ fontFamily: 'Cinzel, serif' }}>
-                The Club
-              </h4>
-              <ul className="space-y-4">
-                {footerLinks.theClub.map((link) => (
-                  <li key={link.name}>
-                    <Link 
-                      href={link.href} 
-                      className="text-[#F2F2F2]/70 text-sm transition-all duration-300 hover:text-[#C5A059] hover:translate-x-1 flex items-center group"
-                      style={{ fontFamily: 'Montserrat, sans-serif' }}
-                    >
-                      <span className="w-0 h-px bg-[#C5A059] mr-0 transition-all duration-300 group-hover:w-4 group-hover:mr-2" />
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="space-y-6">
-              <h4 className="text-[#C5A059] font-serif uppercase tracking-widest text-xs font-semibold" style={{ fontFamily: 'Cinzel, serif' }}>
-                Connect
-              </h4>
-              <ul className="space-y-4">
-                {footerLinks.connect.map((link) => (
-                  <li key={link.name}>
-                    <Link 
-                      href={link.href} 
-                      className="text-[#F2F2F2]/70 text-sm transition-all duration-300 hover:text-[#C5A059] hover:translate-x-1 flex items-center group"
-                      style={{ fontFamily: 'Montserrat, sans-serif' }}
-                    >
-                      <span className="w-0 h-px bg-[#C5A059] mr-0 transition-all duration-300 group-hover:w-4 group-hover:mr-2" />
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="space-y-6">
-              <h4 className="text-[#C5A059] font-serif uppercase tracking-widest text-xs font-semibold" style={{ fontFamily: 'Cinzel, serif' }}>
-                Location
-              </h4>
-              <div className="text-sm text-[#F2F2F2]/70 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                <p>1200 Obsidian Plaza</p>
-                <p>Upper East Side, NY 10021</p>
-                <p className="mt-4 text-[#C5A059] font-medium">
-                  +1 (212) 555-0198
-                </p>
-              </div>
-            </div>
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-lg font-black uppercase tracking-tight mb-8 text-white border-l-4 border-[#D9FF00] pl-3">
+              Company
+            </h4>
+            <ul className="space-y-4">
+              {footerLinks.company.map((link) => (
+                <li key={link.name}>
+                  <Link 
+                    href={link.href} 
+                    className="text-slate-400 hover:text-[#D9FF00] transition-colors duration-200 uppercase text-sm font-bold tracking-wide"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          {/* Programs */}
+          <div>
+            <h4 className="text-lg font-black uppercase tracking-tight mb-8 text-white border-l-4 border-[#D9FF00] pl-3">
+              Programs
+            </h4>
+            <ul className="space-y-4">
+              {footerLinks.programs.map((link) => (
+                <li key={link.name}>
+                  <Link 
+                    href={link.href} 
+                    className="text-slate-400 hover:text-[#D9FF00] transition-colors duration-200 uppercase text-sm font-bold tracking-wide"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          {/* Newsletter/CTA */}
+          <div className="flex flex-col space-y-6">
+            <h4 className="text-lg font-black uppercase tracking-tight mb-2 text-white border-l-4 border-[#D9FF00] pl-3">
+              Join the Elite
+            </h4>
+            <p className="text-slate-400 text-sm font-medium">
+              Get exclusive training tips and early access to new class schedules.
+            </p>
+            <form className="relative group" onSubmit={(e) => e.preventDefault()}>
+              <input 
+                type="email" 
+                placeholder="EMAIL ADDRESS" 
+                className="w-full bg-[#1A1A1A] border-2 border-slate-700 px-4 py-3 text-sm font-bold uppercase placeholder:text-slate-600 focus:outline-none focus:border-[#D9FF00] transition-all duration-200 text-white"
+                required
+              />
+              <button 
+                type="submit" 
+                className="absolute right-0 top-0 bottom-0 bg-[#D9FF00] text-[#121212] px-4 font-black uppercase text-xs hover:bg-white transition-colors duration-200"
+              >
+                Join
+              </button>
+            </form>
           </div>
         </div>
-
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-[#262626] flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[#F2F2F2]/40 text-xs tracking-widest uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            © {currentYear} Aurelian Gym. All Rights Reserved.
-          </p>
-          <div className="flex gap-8 text-xs tracking-widest uppercase text-[#F2F2F2]/40" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            <Link href="#" className="hover:text-[#C5A059] transition-colors duration-300">Privacy Policy</Link>
-            <Link href="#" className="hover:text-[#C5A059] transition-colors duration-300">Terms of Service</Link>
-            <Link href="#" className="hover:text-[#C5A059] transition-colors duration-300">Cookie Settings</Link>
+        <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+          <div className="text-slate-500 text-xs font-bold uppercase tracking-widest">
+            © {currentYear} IRONCORE ATHLETICS. ALL RIGHTS RESERVED.
+          </div>
+          <div className="flex space-x-8">
+            {footerLinks.legal.map((link) => (
+              <Link 
+                key={link.name} 
+                href={link.href} 
+                className="text-slate-600 hover:text-slate-300 transition-colors duration-200 text-[10px] font-black uppercase tracking-tighter"
+              >
+                {link.name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
     </footer>
   );
 };
-
 export default Footer;
